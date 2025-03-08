@@ -5,6 +5,8 @@ import com.xfef0.try_hexagonal.domain.port.in.CreateTaskUseCase;
 import com.xfef0.try_hexagonal.domain.port.out.TaskRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @RequiredArgsConstructor
 public class CreateTaskUseCaseImpl implements CreateTaskUseCase {
 
@@ -12,6 +14,7 @@ public class CreateTaskUseCaseImpl implements CreateTaskUseCase {
 
     @Override
     public Task createTask(Task task) {
+        task.setCreationDate(LocalDateTime.now());
         return taskRepositoryPort.save(task);
     }
 }
