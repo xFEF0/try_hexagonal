@@ -3,7 +3,6 @@ package com.xfef0.try_hexagonal.application.usecase;
 import com.xfef0.try_hexagonal.domain.model.AdditionalTaskInfo;
 import com.xfef0.try_hexagonal.domain.port.in.GetAdditionalTaskInfoUseCase;
 import com.xfef0.try_hexagonal.domain.port.out.ExternalServicePort;
-import com.xfef0.try_hexagonal.domain.port.out.TaskRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
