@@ -33,7 +33,7 @@ public class TaskController {
     @GetMapping("/{taskId}/additionalInfo")
     public ResponseEntity<AdditionalTaskInfo> getAdditionalTaskInfo(@PathVariable Long taskId) {
         AdditionalTaskInfo additionalTaskInfo = taskService.getAdditionalTaskInfo(taskId);
-        return ResponseEntity.ok(additionalTaskInfo);
+        return ResponseEntity.of(Optional.ofNullable(additionalTaskInfo));
     }
 
     @PostMapping
@@ -52,8 +52,7 @@ public class TaskController {
     public ResponseEntity<String> deleteTask(@PathVariable Long taskId) {
         String baseResponse = "Task id = " + taskId;
         ResponseEntity<String> responseEntity = new ResponseEntity<>(baseResponse + " not found.", HttpStatus.NOT_FOUND);
-        boolean deleted = taskService.deleteTask(taskId);
-        if (deleted) {
+        if (taskService.deleteTask(taskId)) {
             responseEntity = new ResponseEntity<>(baseResponse + " deleted.", HttpStatus.NO_CONTENT);
         }
 
