@@ -187,6 +187,9 @@ class TaskControllerTest {
 
     private String getStringDate(LocalDateTime dateTime) {
         String creationDate = dateTime.toString();
-        return creationDate.substring(0, creationDate.length() - 2);
+        if (creationDate.length() > "2025-03-12T17:22:59.640273".length()) {
+            creationDate = creationDate.substring(0, creationDate.length() - 2);
+        }
+        return creationDate;
     }
 }
